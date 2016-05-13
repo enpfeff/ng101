@@ -1,73 +1,20 @@
 <!DOCTYPE html>
-<html ng-app="Main.Module">
+<html ng-app="Core">
 <head>
     <title>My Angular App</title>
 </head>
 <body>
-<div ng-controller="MyController">
-    <input ng-model="filter" type="text">
-    <br/>
 
-    <ul>
-        <li ng-repeat="todo in todos | filter:filter">
-            {{todo}}
-        </li>
-    </ul>
+<div>
 
 </div>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+
 <script>
-    var app = angular.module('Main.Module', ['Core']);
-
-    app.bootstrap(document.body);
-
-    angular.module('Core', ['ngResource'])
-            .config([function () {
-                console.log('Angular Config');
-            }])
-            .controller('MyController', ['$scope', 'MyFactory', function ($scope, MyFactory) {
-                console.log('Hello');
-
-                MyFactory.getTodos()
-                        .then(function (data) {
-                            $scope.todos = data.todos;
-                        });
-
-                $scope.name = 'Ian';
-            }])
-            .directive('myName', [function () {
-                return {
-                    restrict: 'E',
-                    scope: {
-                        name: '='
-                    },
-                    template: '<div>Directives Name is: {{name}}</div>',
-                    link: function (scope, element, attr) {
-
-                    }
-                }
-            }])
-            .factory('MyFactory', ['$http', 'DaoFactory', function ($http, DaoFactory) {
-
-                function getTodos() {
-                    return DaoFactory.get({id: '12345', param1: 'Wheeler'}).$promise;
-                }
-
-                function setTodos() {}
-
-                return {
-                    'getTodos': getTodos,
-                    'setTodos': setTodos
-                };
-            }])
-            .factory('DaoFactory', ['$resource', function ($resource) {
-                return $resource('/todos/:id', {}, {}, {});
-            }])
-
 
 </script>
+
 </body>
 </html>
