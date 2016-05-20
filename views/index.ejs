@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html ng-app="Core">
+<html ng-app="App">
 <head>
     <title>My Angular App</title>
 </head>
 <body>
 
-<div>
+<div ng-controller="MainController">
 
+    <my-name name="name"></my-name>
+
+    <h1>My Todos: </h1>
+    <ul>
+        <li ng-repeat="todo in todos">
+            {{todo}}
+        </li>
+    </ul>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+<script src="/javascripts/app.js"></script>
+<script src="/javascripts/logger.config.js"></script>
+<script src="/javascripts/controllers.js"></script>
+<script src="/javascripts/todos.service.js"></script>
+<script src="/javascripts/todos.resource.js"></script>
+<script src="/javascripts/logger.service.js"></script>
+<script src="/javascripts/myName.directive.js"></script>
 
-<script>
-
-</script>
 
 </body>
 </html>

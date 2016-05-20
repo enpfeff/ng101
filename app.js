@@ -28,10 +28,7 @@ app.get('/todos/:id', function (req, res) {
         todos: [
             'get To Work',
             'Make Lunch',
-            'a',
-            'b',
-            'c',
-            'd'
+            'Get Tacos'
         ]
     })
 });
