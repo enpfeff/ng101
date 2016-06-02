@@ -2,13 +2,18 @@
 <html ng-app="App">
 <head>
     <title>My Angular App</title>
+    <link href="/stylesheets/style.css" rel="stylesheet">
 </head>
 <body>
 
 <div ng-controller="MainController">
 
-    <my-name name="name"></my-name>
+    <div class="view-port" ui-view=""></div>
 
+    <button ng-click="goToAbout()">About</button>
+    <button ng-click="goHome()">Home</button>
+
+    <!--<my-name name="name"></my-name>-->
     <h1>My Todos: </h1>
     <ul>
         <li ng-repeat="todo in todos">
@@ -27,6 +32,9 @@
 <script src="/javascripts/todos.resource.js"></script>
 <script src="/javascripts/logger.service.js"></script>
 <script src="/javascripts/myName.directive.js"></script>
+<script src="/javascripts/router.config.js"></script>
+<script src="/javascripts/home.controller.js"></script>
+<script src="/javascripts/concrete.controller.js"></script>
 
 
 </body>

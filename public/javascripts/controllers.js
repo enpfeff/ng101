@@ -10,19 +10,27 @@
 
 var app = angular.module('App');
 
-app
-    .controller('MainController', function ($scope, TodosService) {
+app.controller('MainController', function ($state, $scope, TodosService) {
 
-        console.log('Contorller')
+    console.log('Contorller');
 
-        $scope.name = 'Kevin';
-        $scope.todos = [];
+    $scope.name = 'Kevin';
+    $scope.todos = [];
+    $scope.goToAbout = goToAbout;
+    $scope.goHome = goHome;
 
-        TodosService.getTodos()
-            .then(assignTodos);
+    TodosService.getTodos()
+        .then(assignTodos);
 
+    function goHome() {
+        $state.go('home.concrete');
+    }
 
-        function assignTodos(resources) {
-            return $scope.todos = resources.todos;
-        }
-    });
+    function goToAbout() {
+        $state.go('about');
+    }
+
+    function assignTodos(resources) {
+        return $scope.todos = resources.todos;
+    }
+});
